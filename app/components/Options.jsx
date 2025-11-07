@@ -1,10 +1,12 @@
+import Link from "next/link";
+
 const Options = () => {
   return (
     <>
       {/* Options */}
       <div className="mx-auto mb-20 max-w-[1200px] px-5">
         {/* Options: ZX9 Speakers */}
-        <div className="relative flex flex-col items-center justify-center gap-10 overflow-hidden rounded-2xl bg-[#d87d4a] px-10 py-20 md:grid md:grid-cols-2 md:gap-20 md:px-40 md:py-30">
+        <div className="bg-site-color relative flex flex-col items-center justify-center gap-10 overflow-hidden rounded-2xl px-10 py-20 md:grid md:grid-cols-2 md:gap-20 md:px-40 md:py-30">
           <div>
             <img
               src="/images/home/mobile/image-speaker-zx9.png"
@@ -21,9 +23,33 @@ const Options = () => {
               Upgrade to premium speakers that are phenomenally built to deliver
               truly remarkable sound.
             </p>
-            <button className="rounded-2xl bg-black px-6 py-3 text-white">
+            <button className="cursor-pointer rounded-2xl bg-black px-6 py-3 text-white">
               See Product
             </button>
+          </div>
+        </div>
+
+        {/* Options: ZX7 Speakers */}
+        <div className="relative my-10 flex aspect-video flex-col items-center justify-start gap-10 overflow-hidden rounded-2xl bg-[url('/images/home/tablet/image-speaker-zx7.jpg')] bg-cover bg-no-repeat px-4 py-10 md:bg-[url('/images/home/desktop/image-speaker-zx7.jpg')] lg:h-80 lg:w-full lg:flex-row lg:justify-between lg:px-20 lg:py-0">
+          <div className="absolute inset-0 bg-black/10"></div>
+          {/* <div className="absolute -top-35 left-0 h-full w-full"></div> */}
+          {/* <div className="flex h-full w-full flex-col items-start justify-center space-y-6 text-black lg:space-y-8 lg:text-left">
+            <p className="text-2xl tracking-wider md:text-2xl lg:text-6xl xl:text-7xl">
+              ZX7 SPEAKER
+            </p>
+            <a href="#">
+              <button className="cursor-pointer rounded-2xl border-2 border-black px-6 py-3 transition duration-75 hover:bg-black hover:text-2xl hover:text-white">
+                See Product
+              </button>
+            </a>
+          </div> */}
+          <div className="flex h-full w-full flex-col items-start justify-center gap-6">
+            <p className="text-2xl uppercase md:text-5xl">XZ7 Speaker</p>
+            <Link href="#">
+              <button className="cursor-pointer rounded-2xl border-2 border-black px-6 py-3">
+                See Product
+              </button>
+            </Link>
           </div>
         </div>
       </div>

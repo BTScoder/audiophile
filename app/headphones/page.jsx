@@ -1,6 +1,7 @@
 "use client";
 import { useProductContext } from "../context/ProductContext";
 import ProductCard from "../components/ProductCard";
+import Link from "next/link";
 import Shop from "../components/Shop";
 const Headphones = () => {
   const { products } = useProductContext();
@@ -22,13 +23,15 @@ const Headphones = () => {
           headphoneList
             .sort((a, b) => b.new - a.new)
             .map((headphone) => (
-              <ProductCard
-                name={headphone.name}
-                key={headphone.id}
-                desc={headphone.description}
-                n={headphone.new}
-                image={headphone.categoryImage}
-              />
+              <Link href={`/details/${headphone.id}`}>
+                <ProductCard
+                  name={headphone.name}
+                  key={headphone.id}
+                  desc={headphone.description}
+                  n={headphone.new}
+                  image={headphone.categoryImage}
+                />
+              </Link>
             ))
         ) : (
           <p>No products available.</p>

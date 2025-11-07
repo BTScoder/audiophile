@@ -13,8 +13,8 @@ const Footer = () => {
           src="/images/shared/desktop/logo.svg"
           alt="Audiophile Logo"
           width={130}
-          height={130}
-          quality={100}
+          height={25}
+          quality={75}
           priority
         />
         <div className="mt-6 flex max-w-xl gap-6 text-white">
@@ -27,36 +27,33 @@ const Footer = () => {
           Audiophile is an all in one stop to fulfill your audio needs. We're a
           small team of music lovers and sound specialists who are devoted to
           helping you get the most out of personal audio. Come and visit our
-          demo facility - we’re open 7 days a week.
+          demo facility - we're open 7 days a week.
         </p>
         <div className="mt-10 flex items-center justify-between">
           <p className="text-gray-500">
-            Copyright 2021. All rights <br /> researved{" "}
+            Copyright 2021. All rights <br /> reserved{" "}
           </p>
           <div className="flex items-center gap-6">
             <Image
               src="/images/shared/desktop/icon-facebook.svg"
-              width={30}
-              height={30}
-              quality={100}
+              width={24}
+              height={24}
+              quality={75}
               alt="facebook"
-              priority
             />
             <Image
               src="/images/shared/desktop/icon-twitter.svg"
-              width={30}
-              height={30}
-              quality={100}
+              width={24}
+              height={24}
+              quality={75}
               alt="twitter"
-              priority
             />
             <Image
               src="/images/shared/desktop/icon-instagram.svg"
-              width={30}
-              height={30}
-              quality={100}
+              width={24}
+              height={24}
+              quality={75}
               alt="instagram"
-              priority
             />
           </div>
         </div>

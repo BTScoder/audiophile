@@ -2,13 +2,13 @@ import Image from "next/image";
 const Feature = () => {
   return (
     <>
-      <div className="mb-10 flex flex-col gap-10 px-5 md:mx-auto md:grid md:max-w-[1200px] md:grid-cols-2 md:items-center md:gap-10">
+      <div className="flex flex-col gap-10 px-5 md:mx-auto md:grid md:max-w-[1200px] md:grid-cols-2 md:items-center md:gap-10">
         <Image
           src="/images/shared/tablet/image-best-gear.jpg"
           alt="feature image"
           width={500}
           height={500}
-          quality={100}
+          quality={75}
           priority
           className="mb-6 rounded-2xl md:hidden"
         />
@@ -17,7 +17,7 @@ const Feature = () => {
           alt="feature image"
           width={500}
           height={500}
-          quality={100}
+          quality={75}
           priority
           className="mb-6 hidden rounded-2xl md:block"
         />

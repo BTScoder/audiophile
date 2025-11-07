@@ -1,21 +1,22 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Menu } from "lucide-react";
+
 const Navbar = () => {
   return (
     <>
       <div className="bg-bg-primary w-full p-10">
         <div className="mx-auto flex max-w-[1200px] items-center justify-between">
-          <a href="/">
+          <Link href="/">
             <Image
               className="dark:invert"
               src="/images/shared/desktop/logo.svg"
               alt="Audiophile Logo"
               width={130}
-              height={130}
-              // quality={75}
+              height={25}
               priority
             />
-          </a>
+          </Link>
 
           {/* Mobile View */}
           <div className="md:hidden">
@@ -27,18 +28,18 @@ const Navbar = () => {
           {/* Desktop view */}
 
           <div className="hidden space-x-4 md:flex md:items-center">
-            <a href="#" className="font-bold text-white uppercase">
+            <Link href="/" className="font-bold text-white uppercase">
               Home
-            </a>
-            <a href="#" className="font-bold text-white uppercase">
+            </Link>
+            <Link href="/headphones" className="font-bold text-white uppercase">
               Headphones
-            </a>
-            <a href="#" className="font-bold text-white uppercase">
+            </Link>
+            <Link href="/speakers" className="font-bold text-white uppercase">
               Speakers
-            </a>
-            <a href="#" className="font-bold text-white uppercase">
+            </Link>
+            <Link href="/earphones" className="font-bold text-white uppercase">
               Earphones
-            </a>
+            </Link>
           </div>
           <div className="hidden md:block">
             <Image
@@ -47,7 +48,6 @@ const Navbar = () => {
               alt="Empty Cart"
               width={30}
               height={30}
-              // quality={100}
               priority
             />
           </div>

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const Shop = () => {
   return (
@@ -9,18 +10,18 @@ const Shop = () => {
             src="/images/home/desktop/image-headphones.png"
             width={170}
             height={170}
-            quality={100}
+            quality={75}
             alt="headphones"
             className="absolute -top-20"
             priority
           />
           <div className="py-10 text-center">
             <p className="font-bold tracking-[6px] uppercase">Headphones</p>
-            <a href="/headphones">
+            <Link href="/headphones">
               <p className="text-sm tracking-wide text-gray-500 uppercase hover:text-orange-500">
                 Shop
               </p>
-            </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -31,18 +32,18 @@ const Shop = () => {
             src="/images/home/desktop/image-speaker-zx9.png"
             width={120}
             height={120}
-            quality={100}
+            quality={75}
             alt="speaker"
             className="absolute -top-20"
             priority
           />
           <div className="py-10 text-center">
             <p className="font-bold tracking-[6px] uppercase">Speakers</p>
-            <a href="/speakers">
+            <Link href="/speakers">
               <p className="text-sm tracking-wide text-gray-500 uppercase hover:text-orange-500">
                 Shop
               </p>
-            </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -53,18 +54,18 @@ const Shop = () => {
             src="/images/shared/desktop/image-earphones.png"
             width={170}
             height={170}
-            quality={100}
+            quality={75}
             alt="earphones"
             className="absolute -top-20"
             priority
           />
           <div className="py-10 text-center">
             <p className="font-bold tracking-[6px] uppercase">Earphones</p>
-            <a href="/earphones">
+            <Link href="/earphones">
               <p className="text-sm tracking-wide text-gray-500 uppercase hover:text-orange-500">
                 Shop
               </p>
-            </a>
+            </Link>
           </div>
         </div>
       </div>

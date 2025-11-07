@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const Hero = () => {
   return (
     <section className="relative flex min-h-screen items-center justify-center bg-[url('/images/home/mobile/image-hero.jpg')] bg-cover bg-center bg-no-repeat py-30 md:grid md:grid-cols-2 md:bg-[url('/images/home/desktop/image-hero.jpg')] md:bg-center">
@@ -13,9 +15,11 @@ const Hero = () => {
           Experience natural, lifelike audio and exceptional build quality made
           for the passionate music enthusiast.
         </p>
-        <button className="mx-auto w-[30%] bg-orange-500 py-3 tracking-widest text-white uppercase hover:bg-orange-600 md:mx-0">
-          See Product
-        </button>
+        <Link href="/details/4">
+          <button className="bg-site-color mx-auto w-[30%] cursor-pointer py-3 tracking-widest text-white uppercase hover:bg-orange-600 md:mx-0">
+            See Product
+          </button>
+        </Link>
       </div>
     </section>
   );
