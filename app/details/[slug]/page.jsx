@@ -2,7 +2,6 @@
 import { useProductContext } from "@/app/context/ProductContext";
 import { useParams } from "next/navigation";
 import Image from "next/image";
-import { useState } from "react";
 import { useCart } from "@/app/context/CartContext";
 import Shop from "@/app/components/Shop";
 
