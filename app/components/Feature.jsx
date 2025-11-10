@@ -2,7 +2,7 @@ import Image from "next/image";
 const Feature = () => {
   return (
     <>
-      <div className="flex flex-col gap-10 px-5 md:mx-auto md:grid md:max-w-[1200px] md:grid-cols-2 md:items-center md:gap-10">
+      <div className="my-10 flex flex-col gap-10 px-5 md:mx-auto md:grid md:max-w-[1200px] md:grid-cols-2 md:items-center md:gap-10">
         <Image
           src="/images/shared/tablet/image-best-gear.jpg"
           alt="feature image"

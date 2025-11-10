@@ -3,42 +3,45 @@ import { useProductContext } from "@/app/context/ProductContext";
 import { useParams } from "next/navigation";
 import Image from "next/image";
 import { useState } from "react";
+import { useCart } from "@/app/context/CartContext";
+import Shop from "@/app/components/Shop";
 
 const Details = () => {
   const params = useParams();
   const slug = params.slug;
-  const [quantity, setQuantity] = useState(1);
-
   const { products } = useProductContext();
   const selectedProduct = products?.products?.find(
     (product) => product.id === parseInt(slug),
   );
+  const { cart, addToCart, decreaseQuantity } = useCart();
+  const inCart = cart?.find((i) => i.id === selectedProduct?.id);
   console.log(selectedProduct);
-
-  const handleIncrement = () => setQuantity(quantity + 1);
-  const handleDecrement = () => {
-    if (quantity > 1) setQuantity(quantity - 1);
-  };
-
+  console.log(cart);
+  console.log(inCart);
   return (
     <>
       <div className="p-5">
         <div className="my-10 px-10 md:grid md:grid-cols-2 md:items-center md:gap-10">
-          <Image
-            src={selectedProduct?.image.mobile}
-            alt={selectedProduct?.name}
-            className="h-auto w-full md:hidden"
-            width={300}
-            height={200}
-          />
-          <Image
-            src={selectedProduct?.image.desktop}
-            alt={selectedProduct?.name}
-            className="hidden rounded-2xl md:block"
-            width={500}
-            height={500}
-            quality={75}
-          />
+          {selectedProduct?.image?.mobile && (
+            <Image
+              src={selectedProduct?.image.mobile}
+              alt={selectedProduct?.name || "Product image"}
+              className="h-auto w-full md:hidden"
+              width={300}
+              height={300}
+              quality={75}
+            />
+          )}
+          {selectedProduct?.image?.desktop && (
+            <Image
+              src={selectedProduct?.image.desktop}
+              alt={selectedProduct?.name || "Product image"}
+              className="hidden rounded-2xl md:block"
+              width={500}
+              height={500}
+              quality={75}
+            />
+          )}
           <div className="flex flex-col items-center gap-6 py-10 text-center md:items-start md:text-start">
             <p className="text-site-color tracking-[8px] uppercase">
               New Product
@@ -53,20 +56,25 @@ const Details = () => {
             <div className="flex items-center gap-4">
               <div className="flex items-center bg-gray-100">
                 <button
-                  onClick={handleDecrement}
                   className="hover:text-site-color px-4 py-3 text-gray-500"
+                  onClick={() => decreaseQuantity(selectedProduct)}
                 >
                   -
                 </button>
-                <span className="px-6 py-3 font-bold">{quantity}</span>
+                <span className="px-6 py-3 font-bold">
+                  {inCart?.purchase || 0}
+                </span>
                 <button
-                  onClick={handleIncrement}
+                  onClick={() => addToCart(selectedProduct)}
                   className="hover:text-site-color px-4 py-3 text-gray-500"
                 >
                   +
                 </button>
               </div>
-              <button className="bg-site-color px-8 py-3 font-bold text-white uppercase hover:bg-orange-600">
+              <button
+                className="bg-site-color px-8 py-3 font-bold text-white uppercase hover:bg-orange-600"
+                onClick={() => addToCart(selectedProduct)}
+              >
                 Add to Cart
               </button>
             </div>
@@ -99,6 +107,54 @@ const Details = () => {
             </div>
           </div>
         </div>
+        {/* Gallery */}
+        <div className="mx-auto grid grid-cols-2 gap-4 md:max-w-[900px]">
+          <div className="flex flex-col gap-4">
+            {selectedProduct?.gallery?.first?.tablet && (
+              <Image
+                src={selectedProduct.gallery.first.tablet}
+                alt={
+                  `${selectedProduct?.name} gallery image 1` ||
+                  "Gallery image 1"
+                }
+                className="h-auto w-full rounded-2xl object-cover"
+                width={300}
+                height={300}
+                quality={75}
+              />
+            )}
+            {selectedProduct?.gallery?.second?.mobile && (
+              <Image
+                src={selectedProduct.gallery.second.mobile}
+                alt={
+                  `${selectedProduct?.name} gallery image 2` ||
+                  "Gallery image 2"
+                }
+                className="h-auto w-full rounded-2xl object-cover"
+                width={300}
+                height={300}
+                quality={75}
+              />
+            )}
+          </div>
+          <div>
+            {selectedProduct?.gallery?.third?.desktop && (
+              <Image
+                src={selectedProduct.gallery.third.desktop}
+                alt={
+                  `${selectedProduct?.name} gallery image 3` ||
+                  "Gallery image 3"
+                }
+                className="h-full w-full rounded-2xl object-cover"
+                width={300}
+                height={600}
+                quality={75}
+              />
+            )}
+          </div>
+        </div>
+        {/* Options */}
+        <Shop />
       </div>
     </>
   );

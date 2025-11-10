@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const Options = () => {
   return (
@@ -8,9 +9,12 @@ const Options = () => {
         {/* Options: ZX9 Speakers */}
         <div className="bg-site-color relative flex flex-col items-center justify-center gap-10 overflow-hidden rounded-2xl px-10 py-20 md:grid md:grid-cols-2 md:gap-20 md:px-40 md:py-30">
           <div>
-            <img
+            <Image
               src="/images/home/mobile/image-speaker-zx9.png"
-              alt="speakers"
+              alt="ZX9 speakers"
+              width={320}
+              height={320}
+              quality={75}
               className="h-auto w-[320px] md:h-auto md:w-[410px] lg:absolute lg:bottom-0 lg:left-10"
             />
           </div>

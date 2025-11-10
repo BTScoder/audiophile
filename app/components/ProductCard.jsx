@@ -1,16 +1,23 @@
 import Image from "next/image";
+
 const ProductCard = ({ name, desc, image, n }) => {
   return (
     <>
       <div className="mt-6 shadow-2xl md:mx-auto md:mb-20 md:grid md:max-w-[1200px] md:grid-cols-2 md:gap-10">
-        <img
+        <Image
           src={image.tablet}
           alt={name}
+          width={400}
+          height={200}
+          quality={75}
           className="h-[200px] w-full rounded-2xl object-cover md:hidden"
         />
-        <img
+        <Image
           src={image.desktop}
           alt={name}
+          width={600}
+          height={400}
+          quality={75}
           className="hidden h-[400px] w-full rounded-2xl object-cover md:block"
         />
         <div className="mt-6 flex flex-col items-center gap-6 p-4 text-center md:items-start">
