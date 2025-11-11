@@ -7,35 +7,49 @@ const CartContext = createContext();
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useLocalStorage("cart", []);
 
-  const addToCart = (item) => {
+  const addToCart = (item, volume) => {
     const exist = cart?.find((i) => i.id === item.id);
     if (!exist) {
-      setCart([...cart, item]);
+      setCart([...cart, { ...item, volume: volume }]);
     } else {
       const updated = cart?.map((i) =>
-        i.id === item.id ? { ...i, purchase: (i.purchase || 1) + 1 } : i,
+        i.id === item.id ? { ...i, volume: (i.volume || 1) + volume } : i,
       );
       setCart(updated);
     }
+    console.log("Adding to cart:", item, "Quantity:", volume);
   };
 
   const decreaseQuantity = (item) => {
-    const exist = cart?.find((i) => i.id === item.id);
-    if (!exist) return;
-
     const updatedCart = cart
       ?.map((i) =>
         i.id === item.id
-          ? { ...i, purchase: Math.max((i.purchase || 1) - 1, 0) }
+          ? { ...i, volume: Math.max((i.volume || 1) - 1, 0) }
           : i,
       )
-      .filter((i) => i.purchase > 0);
+      .filter((i) => i.volume > 0);
+    setCart(updatedCart);
+  };
+  const increaseQuantity = (item) => {
+    const updatedCart = cart?.map((i) =>
+      i.id === item.id ? { ...i, volume: Math.max((i.volume || 1) + 1, 0) } : i,
+    );
     setCart(updatedCart);
   };
 
+  const clearCart = () => {
+    setCart([]);
+  };
   return (
     <CartContext.Provider
-      value={{ cart, setCart, addToCart, decreaseQuantity }}
+      value={{
+        cart,
+        setCart,
+        addToCart,
+        decreaseQuantity,
+        increaseQuantity,
+        clearCart,
+      }}
     >
       {children}
     </CartContext.Provider>

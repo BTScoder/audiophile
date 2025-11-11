@@ -4,14 +4,24 @@ import Image from "next/image";
 import Link from "next/link";
 import { Menu } from "lucide-react";
 import { useCart } from "../context/CartContext";
+import Cart from "./Cart";
 
 const Navbar = () => {
   const { cart } = useCart();
   const [isOpen, setIsOpen] = useState(false);
+  const [cartOpen, setCartOpen] = useState(false);
 
   return (
     <>
       <div className="bg-bg-primary relative w-full p-10">
+        {/* Cart */}
+        {cartOpen && (
+          <div
+            className="fixed inset-0 top-[120px] z-40 bg-black/50 md:hidden"
+            onClick={() => setCartOpen(false)}
+          ></div>
+        )}
+        {cartOpen && <Cart />}
         {/* Transparent Background Overlay */}
         {isOpen && (
           <div
@@ -83,7 +93,7 @@ const Navbar = () => {
             </Link>
           </div>
 
-          <div className="relative">
+          <div className="relative" onClick={() => setCartOpen(true)}>
             <div className="bg-site-color absolute -top-4 -right-4 flex h-3 w-3 items-center justify-center rounded-full p-3 font-bold text-white">
               {cart?.length}
             </div>

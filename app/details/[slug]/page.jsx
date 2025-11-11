@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import { useProductContext } from "@/app/context/ProductContext";
 import { useParams } from "next/navigation";
 import Image from "next/image";
@@ -6,17 +7,32 @@ import { useCart } from "@/app/context/CartContext";
 import Shop from "@/app/components/Shop";
 
 const Details = () => {
+  const [quantity, setQuantity] = useState(0);
+  const [isAdding, setIsAdding] = useState(false);
   const params = useParams();
   const slug = params.slug;
+  // End of slugs use
+
+  // Find the product linked to the slug id gotten from the url
   const { products } = useProductContext();
   const selectedProduct = products?.products?.find(
     (product) => product.id === parseInt(slug),
   );
   const { cart, addToCart, decreaseQuantity } = useCart();
+
+  const handleAddingToCart = () => {
+    setIsAdding(true);
+
+    setTimeout(() => {
+      addToCart(selectedProduct, quantity);
+      setIsAdding(false);
+      setQuantity(0);
+    }, 1500);
+  };
   const inCart = cart?.find((i) => i.id === selectedProduct?.id);
-  console.log(selectedProduct);
-  console.log(cart);
-  console.log(inCart);
+  // console.log(selectedProduct);
+  // console.log(cart);
+  // console.log(inCart);
   return (
     <>
       <div className="p-5">
@@ -46,7 +62,7 @@ const Details = () => {
               New Product
             </p>
             <p className="text-4xl font-semibold">{selectedProduct?.name}</p>
-            <p className="leading-6 text-gray-500">
+            <p className="text-start leading-6 text-gray-500">
               {selectedProduct?.description}
             </p>
             <p className="text-xl font-semibold">${selectedProduct?.price}</p>
@@ -56,25 +72,31 @@ const Details = () => {
               <div className="flex items-center bg-gray-100">
                 <button
                   className="hover:text-site-color px-4 py-3 text-gray-500"
-                  onClick={() => decreaseQuantity(selectedProduct)}
+                  onClick={() => setQuantity((prev) => Math.max(prev - 1, 0))}
                 >
                   -
                 </button>
-                <span className="px-6 py-3 font-bold">
-                  {inCart?.purchase || 0}
-                </span>
+                <span className="px-6 py-3 font-bold">{quantity}</span>
                 <button
-                  onClick={() => addToCart(selectedProduct)}
+                  onClick={() => setQuantity((prev) => prev + 1)}
                   className="hover:text-site-color px-4 py-3 text-gray-500"
                 >
                   +
                 </button>
               </div>
               <button
-                className="bg-site-color px-8 py-3 font-bold text-white uppercase hover:bg-orange-600"
-                onClick={() => addToCart(selectedProduct)}
+                className="bg-site-color flex transform items-center justify-center gap-2 px-4 py-3 font-semibold text-white uppercase transition-all duration-200 active:scale-95 disabled:opacity-50"
+                disabled={quantity === 0 || isAdding}
+                onClick={() => handleAddingToCart()}
               >
-                Add to Cart
+                {isAdding ? (
+                  <>
+                    <span className="loader h-4 w-4 animate-spin rounded-full border-2 border-t-transparent"></span>
+                    Adding...
+                  </>
+                ) : (
+                  <p>Add to Cart</p>
+                )}
               </button>
             </div>
           </div>
