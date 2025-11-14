@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Menu } from "lucide-react";
@@ -11,18 +11,33 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
 
+  // Prevent scrolling when overlays are open
+  useEffect(() => {
+    if (isOpen || cartOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    // Cleanup function
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen, cartOpen]);
+
   return (
     <>
       <div className="bg-bg-primary relative w-full p-10">
-        {/* Cart */}
+        {/* Transparent Background Overlay for Cart */}
         {cartOpen && (
           <div
-            className="fixed inset-0 top-[120px] z-40 bg-black/50 md:hidden"
+            className="fixed inset-0 top-[120px] z-40 bg-black/50"
             onClick={() => setCartOpen(false)}
           ></div>
         )}
+        {/* Cart */}
         {cartOpen && <Cart />}
-        {/* Transparent Background Overlay */}
+
+        {/* Transparent Background Overlay for Dropdown menu */}
         {isOpen && (
           <div
             className="fixed inset-0 top-[120px] z-40 bg-black/50 md:hidden"

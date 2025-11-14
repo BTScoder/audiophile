@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { useProductContext } from "@/app/context/ProductContext";
 import { useParams } from "next/navigation";
+import toast from "react-hot-toast";
 import Image from "next/image";
 import { useCart } from "@/app/context/CartContext";
 import Shop from "@/app/components/Shop";
@@ -27,6 +28,17 @@ const Details = () => {
       addToCart(selectedProduct, quantity);
       setIsAdding(false);
       setQuantity(0);
+      toast.success(`Item ${selectedProduct?.name} was added to cart!`, {
+        style: {
+          background: "#22c55e",
+          color: "#fff",
+          fontWeight: "600",
+        },
+        iconTheme: {
+          primary: "#fff",
+          secondary: "#22c55e",
+        },
+      });
     }, 1500);
   };
   const inCart = cart?.find((i) => i.id === selectedProduct?.id);

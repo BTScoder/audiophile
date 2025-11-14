@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { useCart } from "../context/CartContext";
 import CartItem from "./CartItem";
 const Cart = () => {
@@ -33,6 +34,14 @@ const Cart = () => {
                   increaseQuantity={increaseQuantity}
                 />
               ))}
+              <Link href="/checkout">
+                <button
+                  className="bg-site-color mt-8 w-full py-4 text-sm font-bold tracking-wider text-white uppercase transition-colors hover:bg-orange-600"
+                  disabled={cart.length === 0}
+                >
+                  Checkout{" "}
+                </button>
+              </Link>
             </div>
           ) : (
             <div className="my-10 flex flex-col items-center gap-6">
