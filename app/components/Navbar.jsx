@@ -82,7 +82,7 @@ const Navbar = () => {
             </div>
             <Link href="/">
               <Image
-                className="dark:invert"
+                // className="dark:invert"
                 src="/images/shared/desktop/logo.svg"
                 alt="Audiophile Logo"
                 width={130}

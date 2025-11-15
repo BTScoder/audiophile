@@ -9,7 +9,7 @@ const Footer = () => {
       </div>
       <div className="bg-black/90 px-4 py-18">
         <Image
-          className="dark:invert"
+          // className="dark:invert"
           src="/images/shared/desktop/logo.svg"
           alt="Audiophile Logo"
           width={130}

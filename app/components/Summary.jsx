@@ -18,7 +18,7 @@ const Summary = () => {
         <div className="mb-6 space-y-6">
           {/* Sample Item - Replace with your cart items */}
           {cart?.map((item) => (
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4" key={item.id}>
               <div className="h-16 w-16 shrink-0 overflow-hidden rounded-lg bg-gray-100">
                 <Image
                   src={item?.cartImage}
@@ -77,6 +77,7 @@ const Summary = () => {
         <button
           className="bg-site-color mt-8 w-full py-4 text-sm font-bold tracking-wider text-white uppercase transition-colors hover:bg-orange-600"
           disabled={cart.length === 0}
+          form="checkoutForm"
         >
           Continue & Pay
         </button>
