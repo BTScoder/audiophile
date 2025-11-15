@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Feature from "../components/Feature";
-
+import Link from "next/link";
 const Footer = () => {
   return (
     <>
@@ -18,10 +18,18 @@ const Footer = () => {
           priority
         />
         <div className="mt-6 flex max-w-xl gap-6 text-white">
-          <p className="font-bold uppercase">Home</p>
-          <p className="font-bold uppercase">Headphones</p>
-          <p className="font-bold uppercase">Speakers</p>
-          <p className="font-bold uppercase">Earphones</p>
+          <Link href="/">
+            <p className="font-bold uppercase">Home</p>
+          </Link>
+          <Link href="/headphones">
+            <p className="font-bold uppercase">Headphones</p>
+          </Link>
+          <Link href="/speakers">
+            <p className="font-bold uppercase">Speakers</p>
+          </Link>
+          <Link href="/earphones">
+            <p className="font-bold uppercase">Earphones</p>
+          </Link>
         </div>
         <p className="mt-6 leading-tight text-gray-500">
           Audiophile is an all in one stop to fulfill your audio needs. We're a

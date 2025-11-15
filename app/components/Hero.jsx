@@ -16,7 +16,7 @@ const Hero = () => {
           for the passionate music enthusiast.
         </p>
         <Link href="/details/4">
-          <button className="bg-site-color mx-auto w-[30%] cursor-pointer py-3 tracking-widest text-white uppercase hover:bg-orange-600 md:mx-0">
+          <button className="bg-site-color mx-auto cursor-pointer px-4 py-3 tracking-widest text-white uppercase hover:bg-orange-600 md:mx-0">
             See Product
           </button>
         </Link>

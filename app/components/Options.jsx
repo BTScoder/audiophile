@@ -27,33 +27,48 @@ const Options = () => {
               Upgrade to premium speakers that are phenomenally built to deliver
               truly remarkable sound.
             </p>
-            <button className="cursor-pointer rounded-2xl bg-black px-6 py-3 text-white">
-              See Product
-            </button>
+            <Link href="/details/6">
+              <button className="cursor-pointer rounded-2xl bg-black px-6 py-3 text-white">
+                See Product
+              </button>
+            </Link>
           </div>
         </div>
 
         {/* Options: ZX7 Speakers */}
         <div className="relative my-10 flex aspect-video flex-col items-center justify-start gap-10 overflow-hidden rounded-2xl bg-[url('/images/home/tablet/image-speaker-zx7.jpg')] bg-cover bg-no-repeat px-4 py-10 md:bg-[url('/images/home/desktop/image-speaker-zx7.jpg')] lg:h-80 lg:w-full lg:flex-row lg:justify-between lg:px-20 lg:py-0">
           <div className="absolute inset-0 bg-black/10"></div>
-          {/* <div className="absolute -top-35 left-0 h-full w-full"></div> */}
-          {/* <div className="flex h-full w-full flex-col items-start justify-center space-y-6 text-black lg:space-y-8 lg:text-left">
-            <p className="text-2xl tracking-wider md:text-2xl lg:text-6xl xl:text-7xl">
-              ZX7 SPEAKER
-            </p>
-            <a href="#">
-              <button className="cursor-pointer rounded-2xl border-2 border-black px-6 py-3 transition duration-75 hover:bg-black hover:text-2xl hover:text-white">
-                See Product
-              </button>
-            </a>
-          </div> */}
-          <div className="flex h-full w-full flex-col items-start justify-center gap-6">
-            <p className="text-2xl uppercase md:text-5xl">XZ7 Speaker</p>
-            <Link href="#">
-              <button className="cursor-pointer rounded-2xl border-2 border-black px-6 py-3">
+          <div className="relative z-10 flex h-full w-full flex-col items-start justify-center gap-6">
+            <p className="text-2xl uppercase md:text-5xl">ZX7 Speaker</p>
+            <Link href="/details/5">
+              <button className="cursor-pointer rounded-2xl border-2 border-black px-6 py-3 hover:bg-black hover:text-white">
                 See Product
               </button>
             </Link>
+          </div>
+        </div>
+
+        {/* YX1 Earphones */}
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <Image
+              src="/images/home/mobile/image-earphones-yx1.jpg"
+              alt="YX1 Earphones"
+              width={320}
+              height={320}
+              quality={75}
+              className="h-full w-[320px] rounded-2xl md:h-auto md:w-[410px] lg:w-full"
+            />
+          </div>
+          <div className="flex items-center justify-start rounded-2xl bg-gray-200 px-8 py-6">
+            <div className="space-y-5">
+              <p className="text-xl md:text-4xl">YX1 EARPHONES</p>
+              <Link href="details/1">
+                <button className="cursor-pointer rounded-2xl border-2 border-black px-6 py-3 text-black">
+                  See Product
+                </button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
