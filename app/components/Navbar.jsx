@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Menu } from "lucide-react";
 import { useCart } from "../context/CartContext";
 import Cart from "./Cart";
+import { motion } from "framer-motion";
 
 const Navbar = () => {
   const { cart } = useCart();
@@ -108,7 +109,12 @@ const Navbar = () => {
             </Link>
           </div>
 
-          <div className="relative" onClick={() => setCartOpen(true)}>
+          <motion.div
+            className="relative"
+            onClick={() => setCartOpen(true)}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+          >
             <div className="bg-site-color absolute -top-4 -right-4 flex h-3 w-3 items-center justify-center rounded-full p-3 font-bold text-white">
               {cart?.length}
             </div>
@@ -120,7 +126,7 @@ const Navbar = () => {
               height={30}
               priority
             />
-          </div>
+          </motion.div>
         </div>
         <hr className="mt-10 border-t border-gray-800" />
       </div>

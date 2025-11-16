@@ -9,7 +9,7 @@ const Speakers = () => {
   const speakerList =
     products?.products?.filter((product) => product.category === "speakers") ||
     [];
-  console.log(speakerList);
+
   return (
     <>
       <div>

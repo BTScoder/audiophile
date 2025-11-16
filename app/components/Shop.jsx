@@ -1,75 +1,65 @@
 import Image from "next/image";
 import Link from "next/link";
-
+import { motion } from "framer-motion";
 const Shop = () => {
+  const categories = [
+    {
+      name: "Headphones",
+      image: "/images/shared/desktop/image-headphones.png",
+    },
+    {
+      name: "Speakers",
+      image: "/images/home/desktop/image-speaker-zx9.png",
+    },
+    {
+      name: "Earphones",
+      image: "/images/shared/desktop/image-earphones.png",
+    },
+  ];
   return (
-    <div className="mx-auto my-20 max-w-[1000px] space-y-20 px-5 md:mt-60 md:grid md:grid-cols-3 md:gap-6 md:space-y-0">
-      <div className="flex flex-col items-center justify-center rounded-2xl hover:shadow-2xl">
-        <div className="relative flex w-full flex-col items-center pt-20">
-          <Image
-            src="/images/home/desktop/image-headphones.png"
-            width={170}
-            height={170}
-            quality={75}
-            alt="headphones"
-            className="absolute -top-20"
-            priority
-          />
-          <div className="py-10 text-center">
-            <p className="font-bold tracking-[6px] uppercase">Headphones</p>
-            <Link href="/headphones">
-              <p className="text-sm tracking-wide text-gray-500 uppercase hover:text-orange-500">
-                Shop
-              </p>
+    <motion.div
+      className="mx-auto my-20 max-w-[1200px] space-y-20 px-5 md:mt-20 md:grid md:grid-cols-3 md:gap-6 md:space-y-0"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7 }}
+      viewport={{ once: true }}
+    >
+      {categories.map((category) => (
+        <motion.div
+          className="flex flex-col items-center rounded-2xl p-4 shadow-2xl"
+          key={category.name}
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+        >
+          <div className="flex h-[200px] w-full items-center justify-center rounded-2xl bg-gray-200 p-10">
+            <Image
+              src={category.image}
+              width={170}
+              height={170}
+              quality={75}
+              alt={category.name.toLowerCase()}
+              className="h-auto max-h-full w-auto object-contain"
+              priority
+            />
+          </div>
+          <div className="mt-10 space-y-5 py-4 text-center">
+            <p className="text-3xl font-bold uppercase">{category.name}</p>
+            <p className="text-gray-500 uppercase">Shop Collection</p>
+            <Link href={`/${category.name.toLowerCase()}`}>
+              <motion.button
+                className="cursor-pointer rounded-xl bg-black px-6 py-3 text-center text-white"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                Explore Now
+              </motion.button>
             </Link>
           </div>
-        </div>
-      </div>
-
-      <div className="flex flex-col items-center justify-center rounded-2xl hover:shadow-2xl">
-        <div className="relative flex w-full flex-col items-center pt-20">
-          <Image
-            src="/images/home/desktop/image-speaker-zx9.png"
-            width={120}
-            height={120}
-            quality={75}
-            alt="speaker"
-            className="absolute -top-20"
-            priority
-          />
-          <div className="py-10 text-center">
-            <p className="font-bold tracking-[6px] uppercase">Speakers</p>
-            <Link href="/speakers">
-              <p className="text-sm tracking-wide text-gray-500 uppercase hover:text-orange-500">
-                Shop
-              </p>
-            </Link>
-          </div>
-        </div>
-      </div>
-
-      <div className="flex flex-col items-center justify-center rounded-2xl hover:shadow-2xl">
-        <div className="relative flex w-full flex-col items-center pt-20">
-          <Image
-            src="/images/shared/desktop/image-earphones.png"
-            width={170}
-            height={170}
-            quality={75}
-            alt="earphones"
-            className="absolute -top-20"
-            priority
-          />
-          <div className="py-10 text-center">
-            <p className="font-bold tracking-[6px] uppercase">Earphones</p>
-            <Link href="/earphones">
-              <p className="text-sm tracking-wide text-gray-500 uppercase hover:text-orange-500">
-                Shop
-              </p>
-            </Link>
-          </div>
-        </div>
-      </div>
-    </div>
+        </motion.div>
+      ))}
+    </motion.div>
   );
 };
 

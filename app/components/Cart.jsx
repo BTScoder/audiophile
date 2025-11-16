@@ -7,16 +7,6 @@ const Cart = () => {
   return (
     <>
       <div className="absolute top-20 right-10 z-50 w-[80%] rounded-lg bg-white px-5 py-5 shadow-lg md:max-w-xl">
-        {/* <div className="flex flex-col items-center gap-6">
-          <p>Your Cart is empty</p>
-          <Image
-            src="/images/cart/empty-cart.png"
-            alt="empty-cart"
-            width={100}
-            height={100}
-            quality={75}
-          />
-        </div> */}
         <div>
           <div className="flex items-center justify-between">
             <p className="text-2xl">Your Cart</p>
