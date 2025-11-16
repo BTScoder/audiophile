@@ -42,13 +42,11 @@ const Details = () => {
     }, 1500);
   };
   const inCart = cart?.find((i) => i.id === selectedProduct?.id);
-  // console.log(selectedProduct);
-  // console.log(cart);
-  // console.log(inCart);
+
   return (
     <>
       <div className="p-5">
-        <div className="my-10 px-10 md:grid md:grid-cols-2 md:items-center md:gap-10">
+        <div className="my-10 px-2 md:grid md:grid-cols-2 md:items-center md:gap-10">
           {selectedProduct?.image?.mobile && (
             <Image
               src={selectedProduct?.image.mobile}
@@ -69,11 +67,13 @@ const Details = () => {
               quality={75}
             />
           )}
-          <div className="flex flex-col items-center gap-6 py-10 text-center md:items-start md:text-start">
+          <div className="flex flex-col items-start gap-6 py-10 text-start">
             <p className="text-site-color tracking-[8px] uppercase">
               New Product
             </p>
-            <p className="text-4xl font-semibold">{selectedProduct?.name}</p>
+            <p className="text-4xl font-semibold uppercase">
+              {selectedProduct?.name}
+            </p>
             <p className="text-start leading-6 text-gray-500">
               {selectedProduct?.description}
             </p>
@@ -114,7 +114,7 @@ const Details = () => {
           </div>
         </div>
         {/* Features */}
-        <div className="mx-auto my-30 max-w-[1200px] md:grid md:grid-cols-2 md:items-start md:gap-20">
+        <div className="mx-auto my-10 max-w-[1200px] md:grid md:grid-cols-2 md:items-start md:gap-20">
           <div>
             <h2 className="mb-6 text-3xl font-semibold uppercase">Features</h2>
             <p className="text-[16px] leading-8 text-gray-500">
